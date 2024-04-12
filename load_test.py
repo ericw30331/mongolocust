@@ -22,6 +22,8 @@ class MongoSampleUser(MongoUser):
         self.category_cache = []
         self.customer_cache = []
         self.order_cache = []
+
+    #Dataset 1 (mixed data types)
     def generate_product_table(self):
         """
         Generate Product Table
@@ -81,6 +83,69 @@ class MongoSampleUser(MongoUser):
 	        'created_at':self.faker.date_time(),
         }
         return order_table
+    
+    #Dataset 2 (integer only)
+    '''
+    def generate_product_table(self):
+        """
+        Generate Product Table
+        """
+        product_table ={
+	        'product_name':self.faker.pyint(min_value=0,max_value=5000),
+            'category_id': self.faker.pyint(min_value=0,max_value=5000),
+            'price': self.faker.pyint(min_value=0,max_value=5000),
+            'quantity_available': self.faker.pyint(min_value=0,max_value=5000),
+            'discount_percentage': self.faker.pyint(min_value=0,max_value=90),
+	        'description': self.faker.pyint(min_value=0,max_value=5000),
+	        'image_url': self.faker.pyint(min_value=0,max_value=5000),
+            'created_at':self.faker.pyint(min_value=0,max_value=5000)
+	    
+        }
+        return product_table
+    
+    def generate_category_table(self):
+        """
+        Generate Category Table
+        """
+        category_table ={
+            'category_name': self.faker.pyint(min_value=0,max_value=5000),
+	        'description': self.faker.pyint(min_value=0,max_value=5000),
+        }
+        return category_table
+    
+    def generate_customer_table(self):
+        """
+        Generate Customer Table
+        """
+        customer_table ={
+            'name': self.faker.pyint(min_value=0,max_value=5000),
+            'email': self.faker.pyint(min_value=0,max_value=5000),
+            'phone_number':self.faker.pyint(min_value=0,max_value=5000),
+            'address':self.faker.pyint(min_value=0,max_value=5000),
+	        'city':self.faker.pyint(min_value=0,max_value=5000),
+            'country':self.faker.pyint(min_value=0,max_value=5000),
+	        'postal_code':self.faker.pyint(min_value=0,max_value=5000),
+	        'created_at':self.faker.pyint(min_value=0,max_value=5000),
+        }
+        return customer_table
+    
+    def generate_order_table(self):
+        """
+        Generate Order Table
+        """
+        order_table ={
+            'customer_id': self.faker.pyint(min_value=0,max_value=10000000),
+            'order_date': self.faker.pyint(min_value=0,max_value=5000),
+            'total_amount':self.faker.pyint(min_value=0,max_value=500000),
+            'payment_status':self.faker.pyint(min_value=0,max_value=5000),
+	        'shipping_address':self.faker.pyint(min_value=0,max_value=5000),
+	        'shipping_city':self.faker.pyint(min_value=0,max_value=5000),
+	        'shipping_country':self.faker.pyint(min_value=0,max_value=5000),
+            'shipping_postal_code':self.faker.pyint(min_value=0,max_value=5000),
+	        'created_at':self.faker.pyint(min_value=0,max_value=5000),
+        }
+        return order_table
+    '''
 
     @mongodb_task(weight=int(DEFAULTS['AGG_PIPE_WEIGHT']))
     def run_aggregation_pipeline(self):
