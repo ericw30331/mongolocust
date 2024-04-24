@@ -1,3 +1,8 @@
+## SENG 533 Project
+This project makes use of the mongolocust tool found at https://github.com/sabyadi/mongolocust.
+The load_test.py and settings.py files are the files modified to complete the tasks for the project.
+The test_results folder contains the data of the test results for each scenario.
+
 ## Generating MongoDB workloads using Locust
 
 [Locust](https://locust.io/) is an easy to use, scriptable and scalable performance testing tool written
